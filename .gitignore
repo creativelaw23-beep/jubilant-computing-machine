@@ -1,0 +1,106 @@
+# Dependency directories and caches
+node_modules/
+bower_components/
+jspm_packages/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+vendor/
+target/
+.cargo/
+
+# Package manager caches
+.npm
+.yarn
+.pnp
+.pnp.js
+.cache
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.pytest_cache/
+.hypothesis/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+wheels/
+*.egg
+*.whl
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.envrc
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+.tmp/
+tmp/
+
+# Security scan results
+.snyk
+security-scan-results/
+audit-results/
+
+# Lock files (IMPORTANT: You may want to commit these!)
+# Uncomment the lines below if you want to ignore lock files
+# However, it's recommended to commit lock files for reproducible builds
+# package-lock.json
+# yarn.lock
+# Pipfile.lock
+# Gemfile.lock
+# Cargo.lock
+# go.sum
