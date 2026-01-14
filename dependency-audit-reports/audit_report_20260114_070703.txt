@@ -1,0 +1,34 @@
+Dependency Audit Report
+Generated: Wed Jan 14 07:07:03 UTC 2026
+Repository: jubilant-computing-machine
+Branch: claude/audit-dependencies-mkdofql9askskftz-YNxWn
+========================================
+
+[0;34m[Node.js/npm][0m No package.json found, skipping
+
+[0;34m[Python/pip][0m No Python dependency files found, skipping
+
+[0;34m[Ruby/bundler][0m No Gemfile found, skipping
+
+[0;34m[Rust/cargo][0m No Cargo.toml found, skipping
+
+[0;34m[Go][0m No go.mod found, skipping
+
+
+========================================
+Audit Complete
+========================================
+
+Full report saved to: ./dependency-audit-reports/audit_report_20260114_070703.txt
+
+Recommended actions:
+1. Review any detected vulnerabilities above
+2. Update critical and high-severity packages immediately
+3. Schedule updates for outdated packages
+4. Remove any unused dependencies
+5. Run full test suite after updates
+
+For detailed vulnerability information:
+- npm: Check ./dependency-audit-reports/npm-audit-20260114_070703.json
+- Use online tools: https://snyk.io/ or https://deps.dev/
+
