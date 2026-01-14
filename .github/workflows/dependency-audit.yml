@@ -1,0 +1,162 @@
+name: Dependency Security Audit
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  schedule:
+    # Run every Monday at 8am UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  audit-npm:
+    name: Audit npm Dependencies
+    runs-on: ubuntu-latest
+    if: hashFiles('package.json') != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: false
+
+      - name: Check for outdated packages
+        run: npm outdated || true
+
+      - name: Generate audit report
+        if: failure()
+        run: npm audit --json > npm-audit-report.json
+
+      - name: Upload audit report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-report
+          path: npm-audit-report.json
+
+  audit-python:
+    name: Audit Python Dependencies
+    runs-on: ubuntu-latest
+    if: hashFiles('requirements.txt', 'Pipfile', 'pyproject.toml') != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f Pipfile ]; then pip install pipenv && pipenv install --system; fi
+
+      - name: Run pip-audit
+        run: pip-audit
+        continue-on-error: false
+
+      - name: Check for outdated packages
+        run: pip list --outdated || true
+
+  audit-ruby:
+    name: Audit Ruby Dependencies
+    runs-on: ubuntu-latest
+    if: hashFiles('Gemfile') != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install bundler-audit
+        run: gem install bundler-audit
+
+      - name: Update audit database
+        run: bundle audit update
+
+      - name: Run bundle audit
+        run: bundle audit check
+        continue-on-error: false
+
+      - name: Check for outdated gems
+        run: bundle outdated || true
+
+  audit-rust:
+    name: Audit Rust Dependencies
+    runs-on: ubuntu-latest
+    if: hashFiles('Cargo.toml') != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+
+      - name: Run cargo audit
+        run: cargo audit
+        continue-on-error: false
+
+      - name: Check for outdated crates
+        run: cargo outdated || true
+
+  license-check:
+    name: Check Dependency Licenses
+    runs-on: ubuntu-latest
+    if: hashFiles('package.json', 'requirements.txt', 'Gemfile', 'Cargo.toml') != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (for license checker)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check npm licenses
+        if: hashFiles('package.json') != ''
+        run: |
+          npm install
+          npx license-checker --summary
+
+      - name: Check Python licenses
+        if: hashFiles('requirements.txt') != ''
+        run: |
+          pip install pip-licenses
+          pip-licenses --summary
+
+  summary:
+    name: Audit Summary
+    runs-on: ubuntu-latest
+    needs: [audit-npm, audit-python, audit-ruby, audit-rust, license-check]
+    if: always()
+    steps:
+      - name: Check audit results
+        run: |
+          echo "Dependency audit workflow completed"
+          echo "Check individual job results for details"
