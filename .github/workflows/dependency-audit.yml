@@ -141,7 +141,7 @@ jobs:
       - name: Check npm licenses
         if: hashFiles('package.json') != ''
         run: |
-          npm install
+          npm ci
           npx license-checker --summary
 
       - name: Check Python licenses
