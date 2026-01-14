@@ -1,10 +1,10 @@
 # jubilant-computing-machine
 
-A repository with comprehensive dependency management and security auditing infrastructure.
+Bitcoin Price Telegram Alert Application with comprehensive dependency management and security auditing infrastructure.
 
 ## 📋 Overview
 
-This repository is configured with best-in-class dependency management practices, automated security scanning, and comprehensive audit tooling. While currently empty, it's ready for development with proper dependency tracking from day one.
+A Python application that monitors Bitcoin price and sends Telegram notifications 4 times per day. Configured with best-in-class dependency management practices, automated security scanning, and comprehensive audit tooling.
 
 ## 🔒 Security & Dependency Management
 
@@ -19,7 +19,35 @@ This repository is configured with best-in-class dependency management practices
 - **[DEPENDENCY_AUDIT.md](DEPENDENCY_AUDIT.md)**: Complete guide to dependency management best practices
 - **[DEPENDENCY_CHECKLIST.md](DEPENDENCY_CHECKLIST.md)**: Quick reference checklist for daily/weekly/monthly maintenance
 
-## 🚀 Quick Start
+## 🚀 Bitcoin Price Monitor Quick Start
+
+### Prerequisites
+- Python 3.8+
+- Telegram Bot Token (from @BotFather)
+- Your Telegram Chat ID
+
+### Installation & Setup
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run setup script (interactive configuration)
+python setup.py
+
+# 3. Run the application
+python app.py
+```
+
+The application will send Bitcoin price notifications at:
+- 06:00 UTC
+- 12:00 UTC
+- 18:00 UTC
+- 23:00 UTC
+
+For detailed setup instructions, see [README_APP.md](README_APP.md)
+
+## 🔒 Dependency Management Quick Start
 
 ### Running Manual Dependency Audit
 
