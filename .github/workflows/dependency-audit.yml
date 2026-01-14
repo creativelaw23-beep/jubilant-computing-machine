@@ -17,7 +17,7 @@ jobs:
     if: hashFiles('package.json') != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -52,7 +52,7 @@ jobs:
     if: hashFiles('requirements.txt', 'Pipfile', 'pyproject.toml') != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -80,7 +80,7 @@ jobs:
     if: hashFiles('Gemfile') != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -107,7 +107,7 @@ jobs:
     if: hashFiles('Cargo.toml') != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
@@ -131,7 +131,7 @@ jobs:
     if: hashFiles('package.json', 'requirements.txt', 'Gemfile', 'Cargo.toml') != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js (for license checker)
         uses: actions/setup-node@v4
