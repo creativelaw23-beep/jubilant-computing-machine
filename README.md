@@ -1,10 +1,92 @@
 # jubilant-computing-machine
 
-A repository with comprehensive dependency management and security auditing infrastructure.
+An interactive Constitution Quiz Application with comprehensive dependency management and security auditing infrastructure.
 
 ## 📋 Overview
 
-This repository is configured with best-in-class dependency management practices, automated security scanning, and comprehensive audit tooling. While currently empty, it's ready for development with proper dependency tracking from day one.
+This repository contains an interactive educational application for testing knowledge about the structure of the Russian Constitution (Конституция РФ). The project is configured with best-in-class dependency management practices, automated security scanning, and comprehensive audit tooling.
+
+## 🎓 Constitution Quiz Application
+
+### Features
+
+- **Interactive Quiz**: Multiple choice questions about Russian Constitution structure
+- **Difficulty Levels**: Easy, Medium, and Hard difficulty modes
+- **Random Questions**: Get a random selection of questions
+- **Detailed Feedback**: Explanations for each answer
+- **Score Tracking**: See your performance metrics
+- **Education Information**: Learn about Constitution structure
+
+### Getting Started
+
+#### Prerequisites
+
+- Python 3.7 or higher
+- No external dependencies required (uses only built-in Python modules)
+
+#### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd jubilant-computing-machine
+
+# No package installation needed - no external dependencies!
+```
+
+#### Running the Quiz
+
+```bash
+# Method 1: Using main.py
+python main.py
+
+# Method 2: Using the quiz module directly
+python -m src.quiz.app
+```
+
+### Usage
+
+The application provides an interactive menu with the following options:
+
+1. **Start Full Quiz** - Answer all 12 questions
+2. **Difficulty-Based Quiz** - Choose between Easy, Medium, or Hard
+3. **Random Questions** - Select how many questions you want
+4. **Constitution Info** - Learn about the Constitution structure
+5. **Exit** - Close the application
+
+### Quiz Structure
+
+The quiz includes 12 questions covering:
+- Constitution adoption date and process
+- Constitution structure and chapters
+- Government branches and organs
+- Federal structure
+- Rights and freedoms
+- Constitutional amendments
+
+### Question Difficulty Distribution
+
+- **Easy (3 questions)**: Basic facts about Constitution
+- **Medium (4 questions)**: Structure of government
+- **Hard (5 questions)**: Complex concepts and specific details
+
+### Example Output
+
+```
+======================================================================
+                    ИНТЕРАКТИВНАЯ ВИКТОРИНА
+              Проверка знаний о Конституции РФ
+======================================================================
+
+📚 ГЛАВНОЕ МЕНЮ
+--------------------------------------------------
+1️⃣  Начать викторину (все вопросы)
+2️⃣  Викторина по уровню сложности
+3️⃣  Случайные вопросы (N вопросов)
+4️⃣  Справка о Конституции
+5️⃣  Выход
+--------------------------------------------------
+```
 
 ## 🔒 Security & Dependency Management
 
@@ -137,8 +219,15 @@ pip-autoremove <package>
 │   ├── dependabot.yml              # Dependabot configuration
 │   └── workflows/
 │       └── dependency-audit.yml    # CI/CD security audit workflow
+├── src/
+│   └── quiz/
+│       ├── __init__.py             # Quiz package initialization
+│       ├── app.py                  # Main quiz application
+│       └── questions.py            # Quiz questions and data
 ├── scripts/
 │   └── audit-dependencies.sh       # Manual audit script
+├── main.py                         # Application entry point
+├── requirements.txt                # Python dependencies (empty for this project)
 ├── DEPENDENCY_AUDIT.md             # Comprehensive dependency guide
 ├── DEPENDENCY_CHECKLIST.md         # Quick reference checklist
 └── README.md                       # This file

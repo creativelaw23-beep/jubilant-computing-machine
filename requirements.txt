@@ -1,0 +1,6 @@
+# Constitution Quiz Application Dependencies
+# Зависимости для приложения "Викторина о Конституции РФ"
+
+# No external dependencies required
+# Приложение использует только встроенные модули Python
+# Python >= 3.7 required
