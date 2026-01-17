@@ -5,7 +5,7 @@ Interactive Constitution Quiz Application
 
 import random
 import time
-from questions import QUIZ_QUESTIONS, DIFFICULTY_LEVELS
+from .questions import QUIZ_QUESTIONS, DIFFICULTY_LEVELS
 
 
 class ConstitutionQuiz:
