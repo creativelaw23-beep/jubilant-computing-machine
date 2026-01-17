@@ -36,6 +36,18 @@ cd jubilant-computing-machine
 
 #### Running the Quiz
 
+**Simple way - Direct launch:**
+
+```bash
+# Windows
+run_quiz.bat
+
+# Linux/Mac
+bash run_quiz.sh
+```
+
+**Or with Python directly:**
+
 ```bash
 # Method 1: Using main.py
 python main.py
@@ -43,6 +55,21 @@ python main.py
 # Method 2: Using the quiz module directly
 python -m src.quiz.app
 ```
+
+### 💾 Distributing on USB Drive
+
+You can easily distribute this application on a USB drive! Two options:
+
+**Option 1: Simple (requires Python on target computer)**
+- Copy entire project folder to USB
+- Use `run_quiz.bat` (Windows) or `run_quiz.sh` (Linux/Mac)
+- [See detailed instructions →](USB_DISTRIBUTION.md)
+
+**Option 2: Standalone executable (no Python needed)**
+- Run `build_executable.bat` (Windows) or `build_executable.sh` (Linux/Mac)
+- Copy the resulting `.exe` or executable file to USB
+- Works on any computer, no installation needed!
+- [See detailed instructions →](USB_DISTRIBUTION.md)
 
 ### Usage
 
@@ -227,7 +254,12 @@ pip-autoremove <package>
 ├── scripts/
 │   └── audit-dependencies.sh       # Manual audit script
 ├── main.py                         # Application entry point
-├── requirements.txt                # Python dependencies (empty for this project)
+├── run_quiz.bat                    # Quick launcher for Windows
+├── run_quiz.sh                     # Quick launcher for Linux/Mac
+├── build_executable.bat            # Build standalone .exe for Windows
+├── build_executable.sh             # Build standalone executable for Linux/Mac
+├── USB_DISTRIBUTION.md             # Detailed USB distribution guide
+├── requirements.txt                # Python dependencies
 ├── DEPENDENCY_AUDIT.md             # Comprehensive dependency guide
 ├── DEPENDENCY_CHECKLIST.md         # Quick reference checklist
 └── README.md                       # This file
